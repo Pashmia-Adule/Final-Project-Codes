@@ -1,0 +1,18 @@
+(This code appears when the player wins the game)
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class WinCode : MonoBehaviour
+{
+    public GameObject WinCanvas;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            WinCanvas.SetActive(true);
+        }
+    }
+}
