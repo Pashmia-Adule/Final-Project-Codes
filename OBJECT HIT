@@ -1,0 +1,27 @@
+(THIS CODE COUNTS HOW ANY HITS THAT THE PLAYER GETS AND TURNS BLACK WHEN THE PLAYER HITS IT, AFTER A SET TIME THE OBJECT WILL RETURN TO ITS OG COLOUR)
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ObjectHit : MonoBehaviour
+{
+
+   void OnCollisionEnter(Collision other)
+{
+if(other.gameObject.tag == "Player" ){
+
+ GetComponent<MeshRenderer>().material.color = Color.black;
+gameObject.tag = "Hit";
+StartCoroutine(ResetColorAfterDelay(1.5f)); // Reset color after 1.5 seconds 
+        }
+    }
+
+    IEnumerator ResetColorAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Wait for the specified delay
+        GetComponent<MeshRenderer>().material.color = Color.white; // Reset the color back to the original color
+        gameObject.tag = "Untagged"; // Reset the tag if needed
+   
+}
+}
